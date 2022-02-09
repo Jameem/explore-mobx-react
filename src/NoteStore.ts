@@ -1,31 +1,31 @@
-import {observable, action, makeAutoObservable} from  "mobx"
+import { observable, action, makeAutoObservable } from "mobx";
 
 export class NoteStore {
-    @observable 
-    notes: string[] = []
-    newNote: string = ''
+  @observable
+  notes: string[] = [];
+  newNote: string = "";
 
-    constructor(){
-        makeAutoObservable(this)
-    }
+  constructor() {
+    makeAutoObservable(this);
+  }
 
-    @action
-    public addNote() {
-        this.notes.push(this.newNote)
+  @action
+  public addNote() {
+    this.notes.push(this.newNote);
 
-        this.newNote=""
-    }
+    this.newNote = "";
+  }
 
-    @action
-    public removeNote(noteToDelete:string) {
+  @action
+  public removeNote(noteToDelete: string) {
+    const newNotes = this.notes.filter((note) => note !== noteToDelete);
 
-        const newNotes = this.notes.filter((note)=>note!==noteToDelete);
+    this.notes = newNotes;
+  }
 
-        this.notes =newNotes
-        
-    }
+  //STEP1: This is to test merging
 }
 
-const noteStore = new  NoteStore()
+const noteStore = new NoteStore();
 
-export default noteStore
+export default noteStore;
