@@ -24,6 +24,7 @@ export class NoteStore {
   }
 
   //STEP1: This is to test merging
+  //STEP2: This is to test merging
 }
 
 const noteStore = new NoteStore();
